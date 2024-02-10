@@ -1,4 +1,8 @@
-int dr[] = {1, 0};
+class Solution {
+public:
+    
+    long long numberOfPath(int n, int k, vector<vector<int>> arr){
+        int dr[] = {1, 0};
         int dc[] = {0, 1};
                  // D, R
         
@@ -35,3 +39,5 @@ int dr[] = {1, 0};
         };
         
         return helper(0, 0, k);
+    }
+};
