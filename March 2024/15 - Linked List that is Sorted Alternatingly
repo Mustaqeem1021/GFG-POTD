@@ -1,33 +1,14 @@
-class Solution {
-public:
-    Node* reverse(Node* head) {
-        Node* prev = nullptr;
-        Node* curr = head;
-        while (curr) {
-            Node* next = curr->next;
-            curr->next = prev;
-            prev = curr;
-            curr = next;
-        }
-        return prev;
-    }
-    
+class Solution
+{
+    public:
     void sort(Node **head)
     {
-        if (!(*head) || !(*head)->next)
-            return;
-
-        Node *asc = (*head), *des= (*head)->next;
-        Node* revStart = des;
-        
-        while (des && des->next) {
-            asc->next = des->next;
-            asc = asc->next;
-            des->next = asc->next;
-            des = des->next;
+        for(Node* p=*head; p!= NULL ; p=p->next){
+            for(Node* q =p->next; q != NULL; q =q->next){
+                if(p->data > q->data){
+                    swap(p->data, q->data);
+                }
+            }
         }
-        
-        Node* temp = reverse(revStart);
-        asc->next = temp;
     }
 };
