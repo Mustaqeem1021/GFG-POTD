@@ -1,0 +1,23 @@
+class Solution
+{
+    public:
+    map<int, int>mp;
+    
+    void pre(Node * root, int l, int r){
+        if(root==NULL) return;
+        
+        mp[r-l] = mp[r-l] + root->data;
+        pre(root->left,l+1, r-1);
+        pre(root->right, l+1, r+1);
+        
+    }
+    vector <int> diagonalSum(Node* root) {
+        // Add your code here
+        pre(root,0,0);
+        vector<int> res;
+        for(auto x: mp) res.push_back(x.second);
+        reverse(res.begin(), res.end());
+        return res;
+        
+    }
+};
