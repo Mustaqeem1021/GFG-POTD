@@ -1,0 +1,18 @@
+class Solution {
+  public:
+    int min1=INT_MAX;
+    int minValue(Node* root) {
+        // Code here
+        if(!root) return 0;
+        traverse(root);
+        return min1;
+    }
+    int traverse(Node* root){
+        if(!root) return 0;
+        if(root->data<min1){
+            min1=root->data;
+        }
+        traverse(root->left);
+        traverse(root->right);
+    }
+};
