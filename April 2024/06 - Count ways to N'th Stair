@@ -1,0 +1,15 @@
+class Solution {
+
+  public:
+
+    long long countWays(int n) 
+
+    {
+
+        long long c=1;
+
+        return c+n/2;
+
+    }
+
+};
