@@ -1,0 +1,15 @@
+class Solution {
+public:
+    // Function to find two repeated elements.
+    vector<int> twoRepeated(int arr[], int n) {
+        vector<int> ans; // Create a vector to store the repeated elements
+        for (int i = 0; i < n + 2; i++) { // Iterate through the array
+            int temp = abs(arr[i]); // Get the absolute value of the current element
+            if (arr[temp] > 0) // Check if the element at the absolute index is positive
+                arr[temp] *= -1; // If positive, make it negative
+            else // If the element is negative
+                ans.push_back(temp); // Add it to the list of repeated elements
+        }
+        return ans; // Return the vector containing the repeated elements
+    }
+};
