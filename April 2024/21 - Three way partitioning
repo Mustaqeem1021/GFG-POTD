@@ -1,0 +1,30 @@
+class Solution{   
+public:
+    //Function to partition the array around the range such 
+    //that array is divided into three parts.
+    void threeWayPartition(vector<int>& array,int a, int b)
+    {
+        
+        int j=array.size()-1;
+        int left=0;
+        
+        for(int i=0;i<=j;i++){
+            
+           // int k= array[i];
+            
+            while(i<j && array[i]>b){
+                int temp= array[i];
+                array[i]= array[j];
+                array[j]=temp;
+                j--;
+            }
+            while(left<i &&array[i]<a){
+                int temp= array[i];
+                array[i]= array[left];
+                array[left]=temp;
+                left++;
+            }
+        }
+        // code here 
+    }
+};
