@@ -1,0 +1,17 @@
+class Solution {
+  public:
+  vector<long long>res;
+  void solve(long long n){
+      if(n==1){
+          res.push_back(n);
+          return;
+      }
+      res.push_back(n);
+      if(n&1) solve(n*sqrt(n));
+      else solve(sqrt(n));
+  }
+    vector<long long> jugglerSequence(long long n) {
+        solve(n);
+        return res;
+    }
+};
