@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int maxOccured(int n, int l[], int r[], int maxx) {
+        vector<int> points(maxx + 2, 0);
+        for (int i = 0; i < n; i++) {
+            points[l[i]]++;
+            points[r[i] + 1]--;
+        }
+        int best = 0, cur = 0, ans;
+        for (int i = 0; i <= maxx; i++) {
+            cur += points[i];
+            if (cur > best) {
+                best = cur;
+                ans = i;
+            }
+        }
+        return ans;
+        
+    }
+};
