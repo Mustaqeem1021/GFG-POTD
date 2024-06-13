@@ -1,0 +1,21 @@
+class Solution
+{
+    public:
+    const int mod = 1e9+7;
+    int padovanSequence(int n)
+    {  
+       int P0 =1, P1 =1, P2 = 1;
+       if(n==0 || n==1 || n==2)
+       {
+           return 1;
+       }
+       for(int i=3;i<=n;i++)
+       {
+           int next_val = (P1+P0)%mod;
+           P0=P1;
+           P1=P2;
+           P2=next_val;
+       }
+       return P2;
+    }
+};
