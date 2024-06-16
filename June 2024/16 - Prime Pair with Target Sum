@@ -1,0 +1,59 @@
+class Solution {
+  public:
+      vector<int> sieve_of_eratosthenes(int limit) {
+        vector<bool> is_prime(limit + 1, true);
+        is_prime[0] = is_prime[1] = false;
+    
+        for (int p = 2; p * p <= limit; ++p) {
+            if (is_prime[p]) {
+                for (int multiple = p * p; multiple <= limit; multiple += p) {
+                    is_prime[multiple] = false;
+                }
+            }
+        }
+    
+        vector<int> primes;
+        for (int p = 2; p <= limit; ++p) {
+            if (is_prime[p]) {
+                primes.push_back(p);
+            }
+        }
+    
+        return primes;
+    }
+    
+    // Function to check if a number is prime
+    bool is_prime(int n) {
+        if (n <= 1) {
+            return false;
+        }
+        if (n <= 3) {
+            return true;
+        }
+        if (n % 2 == 0 || n % 3 == 0) {
+            return false;
+        }
+    
+        int limit = static_cast<int>(sqrt(n));
+        vector<int> primes = sieve_of_eratosthenes(limit);
+    
+        
+        return primes.size()==0;
+    }
+    
+    vector<int> getPrimes(int n) {
+        // code here
+        vector<int> primes = sieve_of_eratosthenes(n);
+        unordered_set<int> prime_set(primes.begin(), primes.end());
+    
+        // Iterate through primes and find a pair
+        for (int a : primes) {
+            int b = n - a;
+            if (prime_set.find(b) != prime_set.end()) {
+                return {a, b};
+            }
+        }
+        
+        return {-1, -1};
+    }
+};
