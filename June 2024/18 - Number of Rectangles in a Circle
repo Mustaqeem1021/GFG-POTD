@@ -1,0 +1,15 @@
+class Solution {
+  public:
+    int rectanglesInCircle(int r) {
+        int limit =4 *r*r;
+        int ans =0;
+        for(int i=1;i<=2*r;i++)
+        {
+            for(int j=1;j<=2*r;j++)
+            {
+                if( i*i + j*j <=limit)ans++;
+            }
+        }
+        return ans;
+    }
+};
