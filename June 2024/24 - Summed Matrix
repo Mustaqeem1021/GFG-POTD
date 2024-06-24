@@ -1,0 +1,13 @@
+class Solution {
+  public:
+    long long sumMatrix(long long n, long long q) {
+        long long rem=2+n-1;
+        if(q<rem){
+            return q-2+1;
+        }
+        if((n-(q-rem))>=0)
+        return n-(q-rem);
+        
+        return 0;
+    }
+};
