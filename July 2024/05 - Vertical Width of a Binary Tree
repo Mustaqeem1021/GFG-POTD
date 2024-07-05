@@ -1,0 +1,31 @@
+class Solution {
+  public:
+    // Function to find the vertical width of a Binary Tree.
+    
+    void solve(Node* root,int hd,int &mini,int &maxi){
+        
+        mini = min(mini,hd);
+        maxi = max(maxi,hd);
+        
+        if(root->left)
+            solve(root->left,hd-1,mini,maxi);
+        
+        if(root->right)
+            solve(root->right,hd+1,mini,maxi);
+        
+    }
+    
+    int verticalWidth(Node* root) {
+        
+        if(!root)
+            return 0;
+        
+        int mini = 0;
+        int maxi = 0;
+        
+        solve(root,0,mini,maxi);
+        
+        return (maxi-mini)+1;
+        
+    }
+};
