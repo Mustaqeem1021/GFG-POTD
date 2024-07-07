@@ -1,0 +1,30 @@
+class Solution {
+  public:
+    void parent_tracker(Node* root,map<int,int>& mpp){
+        queue<Node*> q;
+        q.push(root);
+        while(!q.empty()){
+            Node* node=q.front();
+            q.pop();
+            if(node->left){
+                mpp[node->left->data]=node->data;
+                q.push(node->left);
+            }
+            if(node->right){
+                mpp[node->right->data]=node->data;
+                q.push(node->right);
+            }
+        }
+    }
+    // Function should return all the ancestor of the target node
+    vector<int> Ancestors(struct Node *root, int target) {
+        vector<int> ans;
+        map<int,int> mpp;
+        parent_tracker(root,mpp);
+        while(mpp.find(target)!=mpp.end()){
+            ans.push_back(mpp[target]);
+            target=mpp[target];
+        }
+        return ans;
+    }
+};
